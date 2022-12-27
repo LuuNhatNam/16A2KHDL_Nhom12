@@ -1,6 +1,6 @@
 import csv
 def mofile():
-    file = open("ds_hs.csv",'w') 
+    file = open("files/ds_hs.csv",'w') 
     file.write
     return
 
