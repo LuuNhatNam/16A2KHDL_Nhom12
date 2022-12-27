@@ -2,6 +2,7 @@ import csv
 def mofile():
     file = open("ds_hs.csv",'w') 
     file.write
+    return
 
 
 def themhs(lsths):
