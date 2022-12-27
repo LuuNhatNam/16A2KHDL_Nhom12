@@ -1,17 +1,16 @@
 import csv
-#Mở file
-def mofile(_path,lsths):
+def mofile():
     file = open("ds_hs.csv",'w') 
     file.write
 
-#thêm hs
+
 def themhs(lsths):
     while True:
         msv=int(input("Nhập mã sv: "))
         ths=str(input("Nhập tên hs: "))
-        dt=int(input("Nhập điểm toán: "))
-        dl=int(input("Nhập điểm lý: "))
-        dh=int(input("Nhập điểm hóa: "))
+        dt=float(input("Nhập điểm toán: "))
+        dl=float(input("Nhập điểm lý: "))
+        dh=float(input("Nhập điểm hóa: "))
         dtb=(dt+dl+dh)/3
         print("Điểm trung bình: ",dtb)
         if dtb>=9:
@@ -34,27 +33,14 @@ def themhs(lsths):
         if tt!='1':
             break
     return
-#in ds hs
+
 def inhs(lsths):
-    print('{:12}{:12}{:18}{:18}{:18}{:18}{:18}'.format('msv','ths','dt','dl','dh','dtb','xl'))
+    print('{:>12}{:>12}{:>16}{:>18}{:>18}{:>18}{:>25}'.format('msv','ths','dt','dl','dh','dtb','xl'))
     for hs in lsths:
-        print('{:12}{:12}{:18}{:18}{:20}{:18}{:18}'.format(hs['msv'],hs['ths'],hs['dt'],hs['dl'],hs['dh'],hs['dtb'],hs['xl']))
+        print('{:>12}{:>12}{:>16}{:>18}{:>18}{:>18}{:>25}'.format(hs['msv'],hs['ths'],hs['dt'],hs['dl'],hs['dh'],hs['dtb'],hs['xl']))
+    
     return
-#tìm hs
-def timhs(lsths,f):
-    for hs in lsths:
-        if hs['msv']==f:
-            return hs
-    return
-#xóa ds hs
-def xoahs(lsths,masv):
-    for i in range(len(lsths)):
-        hs=lsths[i]
-        if hs['msv']==masv:
-            del(lsths[i])
-            return 1
-    return 0
-#lưu ds hs
+    
 def luuhs(_path,lsths):
     try:
         f=open(_path,'w',newline='',encoding = 'utf-8')
@@ -66,3 +52,20 @@ def luuhs(_path,lsths):
     except Exception as ex1:
         return 0
 
+def timhs(lsths,f):
+    for hs in lsths:
+        if hs['msv']==f:
+            return hs
+    return
+
+def xoahs(lsths,masv):
+    for i in range(len(lsths)):
+        hs=lsths[i]
+        if hs['msv']==masv:
+            del(lsths[i])
+            return 1
+    return 
+
+def sapxephs(lsths):
+    sxhsdtb=sorted(lsths, key=lambda i: i['dtb'],reverse=True)
+    return sxhsdtb

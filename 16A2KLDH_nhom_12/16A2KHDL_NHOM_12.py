@@ -25,7 +25,7 @@ while True:
     
     cn=int(input('Chọn chức năng cần thực hiện: '))
     if cn==1:
-        libs.xu_li_ds_hs.mofile(lsths)
+        libs.xu_li_ds_hs.mofile()
     elif cn==2:
         libs.xu_li_ds_hs.themhs(lsths)
     elif cn==3:
